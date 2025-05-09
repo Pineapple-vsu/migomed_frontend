@@ -38,48 +38,11 @@ export const MainSpecialists = () => {
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log("slide change")}
           >
-            {/* {SPECIALISTS.map((full_name, post, category, experience, index) => (
-              <SwiperSlide>
-                <SpecialistsSlide
-                  key={index}
-                  post={post}
-                  category={category}
-                  experience={experience}
-                >
-                  {full_name}
-                </SpecialistsSlide>
+            {SPECIALISTS.map((specialist, index) => (
+              <SwiperSlide key={index}>
+                <SpecialistsSlide {...specialist}></SpecialistsSlide>
               </SwiperSlide>
-            ))} */}
-            <SwiperSlide>
-              <SpecialistsSlide
-                post={"Врач акушер-гинеколог"}
-                category={"Первая категория"}
-                experience={"Стаж 14 лет"}
-              >
-                Шляхтицева Ольга Леонидовна
-              </SpecialistsSlide>
-            </SwiperSlide>
-            <SwiperSlide>
-              <SpecialistsSlide
-                post={"Врач ультразвуковой диагностики"}
-                category={"Первая категория"}
-                experience={"Стаж 30 лет"}
-              >
-                Жодик Наталья Александровна
-              </SpecialistsSlide>
-            </SwiperSlide>
-            <SwiperSlide>
-              <SpecialistsSlide
-                post={"Врач ультразвуковой диагностики"}
-                category={"Первая категория"}
-                experience={"Стаж 14 лет"}
-              >
-                Куприянова Марина Дмитриевна
-              </SpecialistsSlide>
-            </SwiperSlide>
-            <SwiperSlide>
-              <SpecialistsSlide>Мы в поиске новых сотрудников</SpecialistsSlide>
-            </SwiperSlide>
+            ))}
           </Swiper>
           <div
             ref={prevRef}

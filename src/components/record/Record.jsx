@@ -62,7 +62,11 @@ export const Record = () => {
           <input type="checkbox" id="agree" className={styles.check} />
           <label htmlFor="agree">
             Я согласен на обработку&nbsp;
-            <Link to="/polisy" className={styles.link}>
+            <Link
+              to="/polisy"
+              className={styles.link}
+              onClick={() => setRecordModalOpen(false)}
+            >
               Персональных данных
             </Link>
           </label>

@@ -1,10 +1,10 @@
 import styles from "./specialists-slide.module.css";
 import { Link } from "react-router";
 
-export const SpecialistsSlide = ({ children, post, category, experience }) => {
+export const SpecialistsSlide = ({ full_name, post, category, experience }) => {
   return (
     <div className={styles.content}>
-      <h4 className={styles.name}> {children}</h4>
+      <h4 className={styles.name}> {full_name}</h4>
       <div>
         <p>{post}</p>
         <ul className={styles.list}>

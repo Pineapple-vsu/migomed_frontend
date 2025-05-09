@@ -4,6 +4,7 @@ import styles from "./main-header.module.css";
 import { useState } from "react";
 import { ButtonBlackSmall } from "../../../buttons/button-black-small/ButtonBlackSmall";
 import { Modal } from "../../../Modal/Modal";
+import { TwoModalButtons } from "../../../buttons";
 
 export const MainHeader = () => {
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
@@ -36,7 +37,7 @@ export const MainHeader = () => {
       <div className={styles.buttons}>
         <div className={styles.personal}>
           <div
-            className={`${styles.button} ${styles.button_black}`}
+            className={`${styles.button} ${styles.button_black} ${styles.enter}`}
             onClick={() => setLoginModalOpen(true)}
           >
             Вход
@@ -50,10 +51,14 @@ export const MainHeader = () => {
           </div>
 
           <div className={styles.person__info}>
-            <Link to="/" className={`${styles.button} ${styles.button_green}`}>
+            <div
+              onClick={() => setLoginModalOpen(true)}
+              className={`${styles.button} ${styles.button_green}`}
+            >
               <div className={styles.person_icon}></div>
               <p>Личный кабинет</p>
-            </Link>
+            </div>
+
             <div
               className={`${styles.button} ${styles.button_green}`}
               onClick={() => setRecordModalOpen(true)}
@@ -117,15 +122,15 @@ export const MainHeader = () => {
         onClose={() => setOutModalOpen(false)}
         modalHeader="Вход"
       >
-        <h4>Вы уверены, что хотите выйти?</h4>
-        <div>
+        <h4 className={styles.center}>Вы уверены, что хотите выйти?</h4>
+        <TwoModalButtons>
           <Link to="/" onClick={() => setOutModalOpen(false)}>
             <ButtonBlackSmall>Да</ButtonBlackSmall>
           </Link>
           <Link to="/" onClick={() => setOutModalOpen(false)}>
             <ButtonBlackSmall>Нет</ButtonBlackSmall>
           </Link>
-        </div>
+        </TwoModalButtons>
       </Modal>
 
       <Modal
@@ -172,7 +177,11 @@ export const MainHeader = () => {
           <input type="checkbox" id="agree" className={styles.check} />
           <label htmlFor="agree">
             Я согласен на обработку&nbsp;
-            <Link to="/polisy" className={styles.link}>
+            <Link
+              to="/polisy"
+              className={styles.link}
+              onClick={() => setRecordModalOpen(false)}
+            >
               Персональных данных
             </Link>
           </label>

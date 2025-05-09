@@ -1,0 +1,9 @@
+.two_buttons {
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-around;
+}
+
+.two_buttons > a {
+  width: 40%;
+}
