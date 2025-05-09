@@ -1,0 +1,39 @@
+.services {
+  background-color: #eee;
+}
+
+.service {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.service_list {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.service_item {
+  text-decoration: none !important;
+  width: 30%;
+}
+
+@media (max-width: 1440px) {
+}
+
+@media (max-width: 992px) {
+  .service_list {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .service_item {
+    width: 100%;
+  }
+  br {
+    display: none;
+  }
+  .service {
+    gap: 35px;
+  }
+}

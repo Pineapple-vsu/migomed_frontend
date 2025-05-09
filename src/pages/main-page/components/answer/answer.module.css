@@ -1,0 +1,9 @@
+.block {
+  display: flex;
+  align-items: center;
+  padding: 20px 30px;
+  border: 1px solid #333;
+  border-radius: 30px;
+  gap: 20px;
+  cursor: default;
+}

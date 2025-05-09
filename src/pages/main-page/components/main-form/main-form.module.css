@@ -1,0 +1,46 @@
+.form_block {
+  background-color: #c6e6d6;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.form_row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10%;
+}
+
+.form_row > input {
+  width: 100%;
+}
+
+.form_content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form_agree {
+  display: flex;
+  gap: 15px;
+}
+
+.form_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link {
+  font-size: 20px;
+
+  text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+  .form_row {
+    flex-direction: column;
+    gap: 30px;
+  }
+}

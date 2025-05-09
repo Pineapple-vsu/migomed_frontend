@@ -1,0 +1,15 @@
+.paragraph {
+  text-align: justify;
+}
+.header_padding {
+  padding: 20px 0px;
+}
+
+.list_padding {
+  padding: 20px 40px;
+}
+
+.list_padding > li {
+  padding: 5px 0px;
+  font-size: 20px;
+}

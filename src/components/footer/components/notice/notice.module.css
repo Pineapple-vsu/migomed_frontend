@@ -1,0 +1,31 @@
+.notice {
+  background-color: #1c9856;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 120px;
+}
+.notice * {
+  color: #fff;
+}
+
+.info {
+  display: flex;
+  gap: 10px;
+}
+.info > a {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 360px) {
+  .info {
+    flex-direction: column;
+    gap: 0;
+  }
+  .notice {
+    flex-direction: column;
+  }
+  .info > p {
+    display: none;
+  }
+}

@@ -1,0 +1,17 @@
+.info {
+  display: flex;
+  justify-content: space-between;
+  gap: 10%;
+}
+
+.info > div,
+.info > a {
+  width: 100%;
+}
+
+@media (max-width: 1280px) {
+  .info {
+    flex-direction: column;
+    gap: 40px;
+  }
+}

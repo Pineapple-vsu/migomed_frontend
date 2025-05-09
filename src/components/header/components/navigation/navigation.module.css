@@ -1,0 +1,79 @@
+.navigation {
+  display: flex;
+  background-color: #eee;
+  width: 100%;
+  justify-content: space-between;
+}
+.arrow_down {
+  width: 22px;
+  height: 22px;
+  background: no-repeat center
+    url("data:image/svg+xml;charset=UTF-8,%3csvg width='23' height='23' viewBox='0 0 23 23' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cg clip-path='url(%23clip0_246_1087)'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.9866 15.586C11.7282 15.844 11.378 15.9889 11.0129 15.9889C10.6477 15.9889 10.2975 15.844 10.0392 15.586L4.84185 10.3905C4.58349 10.132 4.43839 9.78146 4.43848 9.41599C4.43856 9.05053 4.58383 8.70007 4.84231 8.4417C5.10079 8.18334 5.45132 8.03824 5.81679 8.03833C6.18226 8.03842 6.53272 8.18368 6.79108 8.44216L11.0129 12.664L15.2347 8.44216C15.4944 8.19105 15.8424 8.052 16.2037 8.05497C16.565 8.05794 16.9106 8.20268 17.1662 8.45803C17.4218 8.71338 17.5669 9.0589 17.5702 9.42017C17.5735 9.78145 17.4348 10.1296 17.1839 10.3896L11.9875 15.5869L11.9866 15.586Z' fill='black'/%3e%3c/g%3e%3cdefs%3e%3cclipPath id='clip0_246_1087'%3e%3crect width='22.046' height='22.046' fill='white' transform='translate(-0.0100098 0.833496)'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e ");
+  background-size: cover;
+}
+
+.item {
+  display: flex;
+  gap: 7px;
+  align-items: start;
+}
+.droped {
+  display: none;
+  position: absolute;
+  flex-direction: column;
+
+  min-width: 200px;
+  /* z-index: 2; */
+  padding-top: 34px;
+  a {
+    padding: 4px 20px;
+    border-top: 1px #000 solid;
+    background-color: #eee;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+.droped > a:last-child {
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom: 1px #000 solid;
+}
+.item:hover {
+  .droped {
+    display: flex;
+  }
+}
+.droped:hover {
+  display: flex;
+}
+
+.navigation {
+  padding: 10px 120px;
+}
+
+@media (max-width: 1280px) {
+  .navigation {
+    padding: 10px 80px;
+  }
+}
+@media (max-width: 992px) {
+  .navigation {
+    padding: 10px 60px;
+  }
+}
+@media (max-width: 768px) {
+  .navigation {
+    padding: 10px 40px;
+  }
+}
+@media (max-width: 576px) {
+  .navigation {
+    padding: 10px 40px;
+  }
+}
+@media (max-width: 360px) {
+  .navigation {
+    padding: 10px 20px;
+  }
+}

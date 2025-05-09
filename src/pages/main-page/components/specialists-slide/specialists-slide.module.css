@@ -1,0 +1,19 @@
+.content {
+  border: 1px solid #000;
+  border-radius: 30px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 250px;
+  /* gap: ; */
+}
+
+.list {
+  padding: 10px 20px;
+}
+
+.name {
+  display: block;
+  white-space: pre-line;
+}

@@ -1,0 +1,26 @@
+.block {
+  display: flex;
+  padding: 20px 30px;
+  align-items: center;
+  background-color: #eee;
+  border: 1px solid #333;
+  border-radius: 30px;
+}
+
+.icon {
+  min-width: 24px;
+  height: 24px;
+  background: url("data:image/svg+xml;charset=UTF-8,%3csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5 12H19M12 5V19' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e ")
+    center no-repeat;
+  background-size: contain;
+  transition: transform 0.3s ease;
+  margin-right: 20px;
+}
+
+.plus {
+  transform: rotate(45deg);
+}
+
+.crose {
+  transform: rotate(0deg);
+}
