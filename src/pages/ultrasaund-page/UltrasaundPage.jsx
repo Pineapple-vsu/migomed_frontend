@@ -6,7 +6,8 @@ export const UltrasaundPage = () => {
   return (
     <>
       <Banner backgroundImg={ultrasaundbanner} textColor={"#fff"}>
-        Ультразвуковая диагностика
+        Ультразвуковая <br />
+        диагностика
       </Banner>
       <section>
         <Video

@@ -9,7 +9,7 @@ export const Question = ({ onClick, question, isOpen }) => {
         onClick={onClick}
       ></div>
 
-      {question}
+      <p>{question}</p>
     </div>
   );
 };

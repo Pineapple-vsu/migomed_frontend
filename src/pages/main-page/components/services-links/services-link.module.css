@@ -33,6 +33,9 @@
   background-size: contain;
 }
 
+.name {
+  font-weight: 600;
+}
 @media (max-width: 1440px) {
   .row::after {
     display: none;
@@ -57,7 +60,7 @@
     display: none;
   }
 }
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .service_img {
     display: flex;
   }
@@ -65,7 +68,7 @@
     flex-direction: row;
   }
   .name {
-    font-size: 20px;
+    font-size: 24px;
   }
 }
 

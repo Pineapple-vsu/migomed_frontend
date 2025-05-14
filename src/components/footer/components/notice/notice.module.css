@@ -17,15 +17,18 @@
   display: flex;
   align-items: center;
 }
-@media (max-width: 360px) {
+@media (max-width: 1024px) {
   .info {
     flex-direction: column;
-    gap: 0;
+    gap: 10px;
   }
   .notice {
     flex-direction: column;
+    gap: 10px;
+    align-items: center;
   }
-  .info > p {
-    display: none;
+  .info a,
+  .name {
+    text-align: center;
   }
 }

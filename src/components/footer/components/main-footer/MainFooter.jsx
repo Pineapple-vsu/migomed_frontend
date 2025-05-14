@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 export const MainFooter = () => {
   return (
-    <div className={styles.main}>
+    <section className={styles.main}>
       <div className={styles.more}>
         <div className={styles.more__text}>
           <h4>Подробнее о центре</h4>
@@ -13,7 +13,7 @@ export const MainFooter = () => {
             выбор, достойный Вас!
           </p>
         </div>
-        <div className={styles["social-media"]}>
+        <div className={styles.social_media}>
           <a
             href="viber://chat?number=%2B375447644422"
             className={`${styles.viber} ${styles.icon}`}
@@ -62,6 +62,6 @@ export const MainFooter = () => {
           <a href="tel:78009">78009 (городской)</a>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

@@ -6,12 +6,9 @@ export const Notice = () => {
     <div className={styles.notice}>
       <p className={styles.name}>© 2025 Медицинский центр «МИГОМЕД»</p>
       <div className={styles.info}>
-        <Link to="/polisy" className={styles.confid}>
-          Политика конфиденциальности
-        </Link>
-        <p className={styles.spliter}> | </p>
-        <Link to="/polisy" className={styles.personality}>
-          Согласие на обработку персональных данных
+        <Link to="/polisy">
+          Политика конфиденциальности | Согласие на обработку персональных
+          данных
         </Link>
       </div>
     </div>

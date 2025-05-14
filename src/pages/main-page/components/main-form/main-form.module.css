@@ -11,8 +11,26 @@
   gap: 10%;
 }
 
-.form_row > input {
+.input_group {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input_group > * {
   width: 100%;
+}
+
+.form_agree {
+  display: flex;
+  flex-direction: column;
+}
+
+.input_full {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .form_content {
@@ -38,9 +56,20 @@
   text-decoration: underline;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   .form_row {
     flex-direction: column;
     gap: 30px;
   }
+
+  .input_group {
+    width: 100%;
+  }
+  .link {
+    font-size: 14px;
+  }
+}
+
+.error {
+  color: red;
 }

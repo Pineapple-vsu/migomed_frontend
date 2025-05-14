@@ -55,7 +55,7 @@
   background-size: contain;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .info {
     display: none;
   }

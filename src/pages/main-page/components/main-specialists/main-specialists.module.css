@@ -66,8 +66,14 @@
   .custom_left {
     left: -40px !important;
   }
+
+  .custom_right,
+  .custom_left {
+    min-width: 40px !important;
+    height: 40px !important;
+  }
 }
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .custom_right {
     right: -30px !important;
   }
@@ -76,12 +82,17 @@
     left: -30px !important;
   }
 }
-@media (max-width: 1280px) {
+@media (max-width: 768px) {
+  .custom_right,
+  .custom_left {
+    min-width: 30px !important;
+    height: 30px !important;
+  }
   .custom_right {
-    right: -40px !important;
+    right: -10px !important;
   }
 
   .custom_left {
-    left: -40px !important;
+    left: -10px !important;
   }
 }
