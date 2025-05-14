@@ -26,9 +26,22 @@
     flex-direction: column;
     gap: 10px;
     align-items: center;
+    padding: 5px 60px;
   }
   .info a,
   .name {
     text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .notice {
+    padding: 5px 40px;
+  }
+}
+
+@media (max-width: 360px) {
+  .notice {
+    padding: 5px 20px;
   }
 }

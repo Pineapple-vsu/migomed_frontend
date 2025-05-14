@@ -193,7 +193,7 @@ export const MainHeader = () => {
             placeholder="AA0000000"
           />
         </div>
-        <Link to="/" onClick={handleLogin}>
+        <Link to="/" onClick={handleLogin} className={styles.button_modal}>
           <ButtonBlackSmall>Войти</ButtonBlackSmall>
         </Link>
       </Modal>
