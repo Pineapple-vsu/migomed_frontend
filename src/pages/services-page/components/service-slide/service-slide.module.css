@@ -12,3 +12,12 @@
 .content * {
   color: #fff;
 }
+
+@media (max-width: 576px) {
+  .description {
+    display: none;
+  }
+  .content {
+    height: inherit;
+  }
+}

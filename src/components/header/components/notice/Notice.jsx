@@ -2,7 +2,7 @@ import styles from "./notice.module.css";
 
 export const Notice = () => {
   return (
-    <section className={styles.notice}>
+    <div className={styles.notice}>
       <div className={styles.info}>
         <p className={styles.info__text}>
           Новый медицинский центр в Горках для всей семьи
@@ -26,6 +26,6 @@ export const Notice = () => {
           className={`${styles.mail} ${styles.icon}`}
         ></a>
       </div>
-    </section>
+    </div>
   );
 };

@@ -61,5 +61,18 @@
   }
   .notice {
     justify-content: end;
+    padding: 5px 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .notice {
+    padding: 5px 40px;
+  }
+}
+
+@media (max-width: 360px) {
+  .notice {
+    padding: 5px 20px;
   }
 }

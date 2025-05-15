@@ -12,3 +12,27 @@
   flex-direction: column;
   gap: 35px;
 }
+
+.content > p {
+  text-align: center;
+}
+
+.error {
+  color: red;
+}
+
+.form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form > div:last-child {
+  align-items: center;
+}

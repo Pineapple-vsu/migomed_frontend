@@ -3,9 +3,9 @@ import { logo } from "../../../../assets";
 import styles from "./main-header.module.css";
 import { useState } from "react";
 import { ButtonBlackSmall } from "../../../buttons/button-black-small/ButtonBlackSmall";
-import { Modal } from "../../../Modal/Modal";
 import { TwoModalButtons } from "../../../buttons";
 import { NavLink } from "react-router";
+import { Modal } from "../../../modal/Modal";
 
 export const MainHeader = () => {
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
@@ -224,17 +224,12 @@ export const MainHeader = () => {
             type="text"
             name="specialist"
             id="specialist"
-            placeholder="Фамилия Имя Отчество"
+            placeholder="ФИО врача"
           />
         </div>
         <div className={styles.module}>
           <label htmlFor="user">Введите Ваше ФИО</label>
-          <input
-            type="text"
-            name="user"
-            id="user"
-            placeholder="Фамилия Имя Отчество"
-          />
+          <input type="text" name="user" id="user" placeholder="ФИО" />
         </div>
 
         <div className={styles.module}>
@@ -243,7 +238,7 @@ export const MainHeader = () => {
             type="tel"
             name="phone"
             id="phone"
-            placeholder="+375 29 000 00 00"
+            placeholder="+375290000000"
           />
         </div>
         <div className={styles.module}>

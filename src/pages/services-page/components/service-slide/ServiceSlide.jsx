@@ -16,7 +16,7 @@ export const ServiceSlide = ({
       }}
     >
       <h2> {children}</h2>
-      <div>
+      <div className={styles.description}>
         <p>{description}</p>
       </div>
       <Link to={slideLink}>

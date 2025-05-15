@@ -148,6 +148,9 @@ button {
   p {
     font-size: 16px;
   }
+  span {
+    font-size: 60px;
+  }
 }
 @media (max-width: 768px) {
   section {
@@ -172,6 +175,9 @@ button {
     font-size: 20px;
     font-weight: lighter;
   }
+  span {
+    font-size: 50px;
+  }
   p,
   input:not(input[type="checkbox"]),
   textarea,
@@ -190,10 +196,19 @@ button {
     font-size: 26px;
   }
   h4 {
-    font-size: 14px;
+    font-size: 18px;
+  }
+  label {
+    display: none;
+  }
+  span {
+    font-size: 40px;
   }
 }
 @media (max-width: 360px) {
+  span {
+    font-size: 30px;
+  }
   section {
     padding: 20px 20px;
   }

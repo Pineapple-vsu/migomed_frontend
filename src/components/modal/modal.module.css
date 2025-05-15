@@ -60,9 +60,30 @@
     padding: 35px 100px;
     width: 70%;
   }
+
   .content label,
   .content span,
   .content input:not(input[type="checkbox"]) {
     font-size: 15px;
+  }
+
+  .content > a {
+    margin-top: 0px;
+  }
+  .close_button {
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal_content {
+    padding: 35px 50px;
+  }
+  .close_button {
+    width: 30px;
+    height: 30px;
   }
 }

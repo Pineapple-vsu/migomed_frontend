@@ -16,6 +16,6 @@
 .button_black_small > p {
   color: #fff;
 }
-.button_black_small > p:hover {
+.button_black_small:hover > p {
   color: #000;
 }

@@ -9,5 +9,23 @@
   justify-content: center;
   text-align: center;
 }
-@media (max-width: 1280) {
+@media (max-width: 1280px) {
+  .banner {
+    height: 500px;
+  }
+}
+@media (max-width: 1024px) {
+  .banner {
+    height: 400px;
+  }
+}
+@media (max-width: 768px) {
+  .banner {
+    height: 300px;
+  }
+}
+@media (max-width: 576px) {
+  .banner {
+    height: 200px;
+  }
 }

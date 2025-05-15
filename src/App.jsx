@@ -18,6 +18,7 @@ function App() {
   return (
     <>
       <Header />
+
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/services" element={<ServicePage></ServicePage>} />
@@ -45,6 +46,7 @@ function App() {
 
         <Route path="/polisy" element={<PolisyPage></PolisyPage>} />
       </Routes>
+
       <Footer />
     </>
   );

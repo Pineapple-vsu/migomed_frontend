@@ -1,5 +1,4 @@
 import styles from "./banner.module.css";
-import { Link } from "react-router";
 
 export const Banner = ({ backgroundImg, textColor, children }) => {
   return (
