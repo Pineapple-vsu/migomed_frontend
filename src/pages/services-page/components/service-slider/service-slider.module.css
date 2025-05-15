@@ -1,11 +1,12 @@
 .swiper {
-  /* height: 420px; */
+  height: 450px;
   background-size: cover;
   background-position: center;
 }
 .service_slider {
   padding-top: 0 !important;
 }
+
 @media (max-width: 576px) {
   .swiper {
     height: 300px;

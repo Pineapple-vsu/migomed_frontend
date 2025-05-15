@@ -18,6 +18,6 @@
     display: none;
   }
   .content {
-    height: inherit;
+    height: 300px;
   }
 }
