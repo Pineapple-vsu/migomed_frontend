@@ -38,7 +38,54 @@ export const ContactsPage = () => {
               <p>пн-пт: 7:00-10:00 сб-вс: 7:30-10:00 </p>
             </div>
 
-            <Address></Address>
+            {/* <Address></Address> */}
+            <div>
+              <div className={styles.map}>
+                <a
+                  href="https://yandex.by/maps/org/migomed/147893265700/?utm_medium=mapframe&utm_source=maps"
+                  style={{
+                    color: "#eee",
+                    fontSize: "12px",
+                    position: "absolute",
+                    top: "0px",
+                  }}
+                >
+                  Мигомед
+                </a>
+
+                <a
+                  href="https://yandex.by/maps/26774/gorki/category/medical_laboratory/184106078/?utm_medium=mapframe&utm_source=maps"
+                  style={{
+                    color: "#eee",
+                    fontSize: "12px",
+                    position: "absolute",
+                    top: "14px",
+                  }}
+                >
+                  Медицинская лаборатория в Горках
+                </a>
+                <a
+                  href="https://yandex.by/maps/26774/gorki/category/medical_center_clinic/184106108/?utm_medium=mapframe&utm_source=maps"
+                  style={{
+                    color: "#eee",
+                    fontSize: "12px",
+                    position: "absolute",
+                    top: "28px",
+                  }}
+                >
+                  Медцентр, клиника в Горках
+                </a>
+
+                <iframe
+                  src="https://yandex.by/map-widget/v1/org/migomed/147893265700/?ll=30.997309%2C54.272469&z=18"
+                  width="560"
+                  // height="400"
+                  frameBorder="1"
+                  allowFullScreen={true}
+                  style={{ position: "relative" }}
+                ></iframe>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -1,0 +1,18 @@
+.light {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  border: 1px solid #000;
+  border-radius: 30px;
+  align-items: center;
+  padding: 10px;
+  background-color: #c6e6d6;
+  width: 100%;
+}
+
+.dark {
+  background-color: #000;
+}
+.dark > p {
+  color: #fff;
+}

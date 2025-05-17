@@ -6,6 +6,7 @@ import { ButtonBlackSmall } from "../../../buttons/button-black-small/ButtonBlac
 import { TwoModalButtons } from "../../../buttons";
 import { NavLink } from "react-router";
 import { Modal } from "../../../modal/Modal";
+import { useForm } from "react-hook-form";
 
 export const MainHeader = () => {
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
@@ -13,10 +14,34 @@ export const MainHeader = () => {
   const [isOutModalOpen, setOutModalOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const { register, handleSubmit } = useForm();
 
-  const handleLogin = () => {
-    setLoginModalOpen(false);
-    setIsLoggedIn(true);
+  const handleLogin = async (data) => {
+    console.log("Отправляемые данные:", data);
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        // credentials: "include",
+
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Ошибка входа. Проверьте введенные данные.");
+      }
+
+      const result = await response.text();
+      console.log("Успешный вход:", result);
+      setIsLoggedIn(true);
+      setLoginModalOpen(false);
+      setErrorMessage("");
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
   };
 
   const handleLogout = () => {
@@ -70,13 +95,13 @@ export const MainHeader = () => {
           )}
 
           <div className={styles.person__info}>
-            <div
-              onClick={() => setLoginModalOpen(true)}
+            <Link
+              to="/personal"
               className={`${styles.button} ${styles.button_green}`}
             >
               <div className={styles.person_icon}></div>
               <p>Личный кабинет</p>
-            </div>
+            </Link>
 
             <div
               className={`${styles.button} ${styles.button_green} `}
@@ -175,27 +200,32 @@ export const MainHeader = () => {
         onClose={() => setLoginModalOpen(false)}
         modalHeader="Вход"
       >
-        <div className={styles.module}>
-          <label htmlFor="surname">Фамилия</label>
-          <input
-            type="text"
-            name="surname"
-            id="surname"
-            placeholder="Фамилия"
-          />
-        </div>
-        <div className={styles.module}>
-          <label htmlFor="patronymic">Номер паспорта</label>
-          <input
-            type="text"
-            name="patronymic"
-            id="patronymic"
-            placeholder="AA0000000"
-          />
-        </div>
-        <Link to="/" onClick={handleLogin} className={styles.button_modal}>
-          <ButtonBlackSmall>Войти</ButtonBlackSmall>
-        </Link>
+        <form onSubmit={handleSubmit(handleLogin)}>
+          <div className={styles.module}>
+            <label htmlFor="surname">Фамилия</label>
+            <input
+              type="text"
+              name="surname"
+              id="surname"
+              {...register("surname")}
+              placeholder="Фамилия"
+            />
+          </div>
+          <div className={styles.module}>
+            <label htmlFor="password">Номер паспорта</label>
+            <input
+              type="text"
+              name="password"
+              id="password"
+              placeholder="AA0000000"
+              {...register("password")}
+            />
+          </div>
+          {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+          <button type="submit" className={styles.button_modal}>
+            <ButtonBlackSmall>Войти</ButtonBlackSmall>
+          </button>
+        </form>
       </Modal>
       <Modal
         isOpen={isOutModalOpen}
@@ -204,12 +234,12 @@ export const MainHeader = () => {
       >
         <h4 className={styles.center}>Вы уверены, что хотите выйти?</h4>
         <TwoModalButtons>
-          <Link to="/" onClick={handleLogout}>
+          <button onClick={handleLogout}>
             <ButtonBlackSmall>Да</ButtonBlackSmall>
-          </Link>
-          <Link to="/" onClick={() => setOutModalOpen(false)}>
+          </button>
+          <button onClick={() => setOutModalOpen(false)}>
             <ButtonBlackSmall>Нет</ButtonBlackSmall>
-          </Link>
+          </button>
         </TwoModalButtons>
       </Modal>
 

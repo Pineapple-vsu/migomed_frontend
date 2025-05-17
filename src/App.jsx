@@ -5,6 +5,7 @@ import {
   GynecologyPage,
   MainPage,
   MedblogPage,
+  PersonalPage,
   PhotoPage,
   PolisyPage,
   ServicePage,
@@ -45,6 +46,8 @@ function App() {
         <Route path="/medblog" element={<MedblogPage></MedblogPage>} />
 
         <Route path="/polisy" element={<PolisyPage></PolisyPage>} />
+
+        <Route path="/personal" element={<PersonalPage />} />
       </Routes>
 
       <Footer />
