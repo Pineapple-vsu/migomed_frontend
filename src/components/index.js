@@ -6,3 +6,5 @@ export * from "./banner/Banner";
 export * from "./address/Address";
 export * from "./modal/Modal";
 export * from "./loader/Loader";
+export * from "./table_services/TableService";
+export * from "./service-info/ServiceInfo";

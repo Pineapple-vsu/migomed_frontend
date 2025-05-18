@@ -1,0 +1,23 @@
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #eee;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+.content ul li {
+  /* padding-bottom: 10px; */
+  line-height: 1.75;
+}
