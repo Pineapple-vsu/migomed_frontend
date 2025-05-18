@@ -10,5 +10,7 @@
 
 .white:hover {
   background-color: #fff;
+}
+.white:hover p {
   color: #000;
 }

@@ -1,5 +1,5 @@
 import styles from "./main-specialists.module.css";
-import { SpecialistsSlide } from "../specialists-slide/SpecialistsSlide";
+import { SpecialistsSlide } from "./components";
 import { Link } from "react-router";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";

@@ -5,3 +5,4 @@ export * from "./record/Record";
 export * from "./banner/Banner";
 export * from "./address/Address";
 export * from "./modal/Modal";
+export * from "./loader/Loader";

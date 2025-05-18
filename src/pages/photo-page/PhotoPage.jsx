@@ -1,10 +1,9 @@
 import { about } from "../../assets";
 import { Banner } from "../../components";
+import { BASE_URL } from "../../config";
 import { Gallery } from "./components/gallery/Gallery";
 import styles from "./photo-page.module.css";
 import { useEffect, useState } from "react";
-
-const baseUrl = "https://migomed-new.onrender.com/";
 
 export const PhotoPage = () => {
   const [photos, setPhotos] = useState([]);
@@ -48,7 +47,7 @@ export const PhotoPage = () => {
             {photos.map((photo) => (
               <Gallery key={photo.id}>
                 <img
-                  src={`${baseUrl}${photo.photoPath}`}
+                  src={`${BASE_URL}/${photo.photoPath}`}
                   alt="Фото"
                   className={styles.photo}
                 />

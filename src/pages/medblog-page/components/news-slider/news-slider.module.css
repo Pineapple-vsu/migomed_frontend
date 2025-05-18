@@ -1,0 +1,79 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.custom_right,
+.custom_left {
+  min-width: 50px !important;
+  height: 50px !important;
+  position: relative !important;
+}
+
+.custom_right {
+  right: -60px !important;
+}
+
+.custom_left {
+  left: -60px !important;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+.custom_left {
+  background: url("data:image/svg+xml;charset=UTF-8,%3csvg width='45' height='45' viewBox='0 0 45 45' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='22.5' cy='22.5' r='21.5' stroke='black' stroke-width='2'/%3e%3cpath d='M10.5 22.5H34.5M34.5 22.5L25.5 31.5M34.5 22.5L25.5 13.5' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e ")
+    no-repeat center;
+  background-size: contain;
+  transform: rotate(180deg);
+  order: -1;
+}
+.custom_right {
+  background: url("data:image/svg+xml;charset=UTF-8,%3csvg width='45' height='45' viewBox='0 0 45 45' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='22.5' cy='22.5' r='21.5' stroke='black' stroke-width='2'/%3e%3cpath d='M10.5 22.5H34.5M34.5 22.5L25.5 31.5M34.5 22.5L25.5 13.5' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e ")
+    no-repeat center;
+  background-size: contain;
+}
+.custom_left::after,
+.custom_right::after {
+  display: none;
+}
+@media (max-width: 1280px) {
+  .custom_right {
+    right: -40px !important;
+  }
+
+  .custom_left {
+    left: -40px !important;
+  }
+
+  .custom_right,
+  .custom_left {
+    min-width: 40px !important;
+    height: 40px !important;
+  }
+}
+@media (max-width: 1024px) {
+  .custom_right {
+    right: -30px !important;
+  }
+
+  .custom_left {
+    left: -30px !important;
+  }
+}
+@media (max-width: 768px) {
+  .custom_right,
+  .custom_left {
+    min-width: 30px !important;
+    height: 30px !important;
+  }
+  .custom_right {
+    right: -10px !important;
+  }
+
+  .custom_left {
+    left: -10px !important;
+  }
+}

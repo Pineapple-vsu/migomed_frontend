@@ -5,6 +5,7 @@ import {
   GynecologyPage,
   MainPage,
   MedblogPage,
+  NewsPage,
   PersonalPage,
   PhotoPage,
   PolisyPage,
@@ -22,30 +23,22 @@ function App() {
 
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/services" element={<ServicePage></ServicePage>} />
-        <Route path="/record-form" element={<div>Форма записи к врачу</div>} />
+        <Route path="/services" element={<ServicePage />} />
+        {/* <Route path="/record-form" element={<div>Форма записи к врачу</div>} /> */}
 
-        <Route
-          path="/services/gynecology"
-          element={<GynecologyPage></GynecologyPage>}
-        />
-        <Route
-          path="/services/ultrasaund"
-          element={<UltrasaundPage></UltrasaundPage>}
-        />
-        <Route
-          path="/services/analyzes"
-          element={<AnalyzesPage></AnalyzesPage>}
-        />
+        <Route path="/services/gynecology" element={<GynecologyPage />} />
+        <Route path="/services/ultrasaund" element={<UltrasaundPage />} />
+        <Route path="/services/analyzes" element={<AnalyzesPage />} />
 
-        <Route path="/about" element={<AboutPage></AboutPage>} />
-        <Route path="/about/photo" element={<PhotoPage></PhotoPage>} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/about/photo" element={<PhotoPage />} />
 
         <Route path="/contacts" element={<ContactsPage />} />
 
-        <Route path="/medblog" element={<MedblogPage></MedblogPage>} />
+        <Route path="/medblog" element={<MedblogPage />} />
+        <Route path="/medblog/:id" element={<NewsPage />} />
 
-        <Route path="/polisy" element={<PolisyPage></PolisyPage>} />
+        <Route path="/polisy" element={<PolisyPage />} />
 
         <Route path="/personal" element={<PersonalPage />} />
       </Routes>
