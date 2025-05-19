@@ -25,7 +25,6 @@ export const MainHeader = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        // credentials: "include",
 
         body: JSON.stringify(data),
       });

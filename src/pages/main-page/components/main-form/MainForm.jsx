@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { ButtonBlackSmall } from "../../../../components";
 import styles from "./main-form.module.css";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-// Определяем схему валидации
 const schema = yup.object().shape({
   name: yup
     .string()
-    .required("Введите Ваше имя")
+    .required("Введите Ваше ФИО")
     .min(2, "Имя должно содержать минимум 2 символа")
     .max(20, "Имя не может превышать 20 символов")
     .matches(/^[^\d]+$/, "В имени нельзя использовать цифры"),
@@ -28,6 +27,8 @@ const schema = yup.object().shape({
 });
 
 export const MainForm = () => {
+  const [submissionStatus, setSubmissionStatus] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -36,10 +37,56 @@ export const MainForm = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    console.log("Данные формы:", data);
-    // Здесь можно вызвать API или выполнить другие действия после успешной валидации
+  const onSubmit = async (data) => {
+    const payload = {
+      fullName: data.name,
+      phoneNumber: data.phone,
+      questionText: data.question,
+    };
+
+    try {
+      const response = await fetch("/api/questions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        setSubmissionStatus("success");
+      } else {
+        setSubmissionStatus("error");
+      }
+    } catch (error) {
+      console.error("Ошибка выполнения запроса:", error);
+      setSubmissionStatus("error");
+    }
   };
+
+  // Успех
+  if (submissionStatus === "success") {
+    return (
+      <section className={styles.block}>
+        <div className={styles.content}>
+          <div className={styles.success_icon}></div>
+          <h2>Ваш вопрос отправлен!</h2>
+        </div>
+      </section>
+    );
+  }
+
+  // Ошибка
+  if (submissionStatus === "error") {
+    return (
+      <section className={styles.block}>
+        <div className={styles.content}>
+          <div className={styles.error_icon}></div>
+          <h2>Извините, произошла ошибка</h2>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className={styles.form_block}>
@@ -47,7 +94,7 @@ export const MainForm = () => {
       <form className={styles.form_content} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.form_row}>
           <div className={styles.input_group}>
-            <input type="text" placeholder="Ваше имя" {...register("name")} />
+            <input type="text" placeholder="Ваше ФИО" {...register("name")} />
             {errors.name && (
               <p className={styles.error}>{errors.name.message}</p>
             )}
