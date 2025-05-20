@@ -1,7 +1,7 @@
 import styles from "./news-slide.module.css";
 import { Link } from "react-router";
 
-export const NewsSlide = ({ link, image, date, children, short }) => {
+export const NewsSlide = ({ link, image, date, headline }) => {
   const formattedDate = new Date(date).toLocaleString("ru-RU", {
     year: "numeric",
     month: "2-digit",
@@ -12,14 +12,15 @@ export const NewsSlide = ({ link, image, date, children, short }) => {
 
   return (
     <Link to={link} className={styles.content}>
-      <div
-        className={styles.image}
-        style={{ backgroundImage: `url(${image})` }}
-      ></div>
-      <h4 className={styles.name}> {children}</h4>
+      <div className={styles.top}>
+        <div
+          className={styles.image}
+          style={{ backgroundImage: `url(${image})` }}
+        ></div>
+        <small>{formattedDate}</small>
+        <h4 className={styles.name}> {headline}</h4>
+      </div>
 
-      <small>{formattedDate}</small>
-      <p className={styles.short}>{short}</p>
       <p className={styles.read}>читать </p>
     </Link>
   );

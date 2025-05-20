@@ -70,7 +70,7 @@ export const NewsSlider = () => {
                 link={`${newsItem.id}`}
                 image={`${BASE_URL}/${newsItem.photos[0].photoPath}`}
                 date={newsItem.publicationDate}
-                short={newsItem.content}
+                headline={newsItem.headline}
               />
             </SwiperSlide>
           ))}

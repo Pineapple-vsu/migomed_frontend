@@ -15,7 +15,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 20px;
+  min-height: 400px;
 }
 
 .content:hover {
@@ -48,4 +48,10 @@
 
 .content:hover > .read {
   text-decoration: underline;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
