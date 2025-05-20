@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { logo } from "../../../../assets";
 import styles from "./main-header.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ButtonBlackSmall } from "../../../buttons/button-black-small/ButtonBlackSmall";
 import { TwoModalButtons } from "../../../buttons";
 import { NavLink } from "react-router";
@@ -47,6 +47,27 @@ export const MainHeader = () => {
     setOutModalOpen(false);
     setIsLoggedIn(false);
   };
+
+  const [isSpecialMode, setIsSpecialMode] = useState(false);
+
+  useEffect(() => {
+    if (isSpecialMode) {
+      const scriptJQuery = document.createElement("script");
+      scriptJQuery.src = "https://lidrekon.ru/slep/js/jquery.js";
+      scriptJQuery.async = true;
+      document.body.appendChild(scriptJQuery);
+
+      const scriptSpecial = document.createElement("script");
+      scriptSpecial.src = "https://lidrekon.ru/slep/js/uhpv-hover-full.min.js";
+      scriptSpecial.async = true;
+      document.body.appendChild(scriptSpecial);
+
+      return () => {
+        document.body.removeChild(scriptJQuery);
+        document.body.removeChild(scriptSpecial);
+      };
+    }
+  }, [isSpecialMode]);
 
   return (
     <section className={styles.main}>
@@ -112,12 +133,13 @@ export const MainHeader = () => {
           </div>
         </div>
         <div className={styles.special}>
-          <Link
-            to="/"
+          <div
+            onClick={() => setIsSpecialMode((prev) => !prev)}
+            id="specialButton"
             className={`${styles.button} ${styles.button_black}  ${styles.button_special}`}
           >
             <div className={styles.special_icon}></div>
-          </Link>
+          </div>
         </div>
       </div>
       {isBurgerOpen && (
