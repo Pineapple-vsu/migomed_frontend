@@ -1,71 +1,174 @@
 import { Link } from "react-router";
 import { logo } from "../../../../assets";
 import styles from "./main-header.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ButtonBlackSmall } from "../../../buttons/button-black-small/ButtonBlackSmall";
 import { TwoModalButtons } from "../../../buttons";
 import { NavLink } from "react-router";
 import { Modal } from "../../../modal/Modal";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser, logout } from "../../../../features/auth/authSlice";
+// import {
+//   setScriptsLoaded,
+//   toggleSpecialMode,
+// } from "../../../../features/accessibility/accessibilitySlice";
+// import { useAccessibility } from "../../../../hooks/useAccessibility";
 
 export const MainHeader = () => {
-  const [isLoginModalOpen, setLoginModalOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { user, role, status, error } = useSelector((state) => state.auth);
+
   const [isRecordModalOpen, setRecordModalOpen] = useState(false);
   const [isOutModalOpen, setOutModalOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  // const [isSpecialMode, setIsSpecialMode] = useState(false);
   const { register, handleSubmit } = useForm();
+  const isLoggedIn = !!user;
+  const [isLoginModalOpen, setLoginModalOpen] = useState(false);
+  // const { isSpecialMode, scriptsLoaded } = useAccessibility();
+
+  // const [isRecordModalOpen, setRecordModalOpen] = useState(false);
+  // const [isOutModalOpen, setOutModalOpen] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+  // const [errorMessage, setErrorMessage] = useState("");
+  // const { register, handleSubmit } = useForm();
 
   const handleLogin = async (data) => {
-    console.log("Отправляемые данные:", data);
     try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        throw new Error("Ошибка входа. Проверьте введенные данные.");
+      const resultAction = await dispatch(loginUser(data));
+      if (loginUser.fulfilled.match(resultAction)) {
+        setLoginModalOpen(false);
       }
-
-      const result = await response.text();
-      console.log("Успешный вход:", result);
-      setIsLoggedIn(true);
-      setLoginModalOpen(false);
-      setErrorMessage("");
     } catch (error) {
-      setErrorMessage(error.message);
+      console.error("Ошибка входа:", error);
     }
   };
 
   const handleLogout = () => {
+    dispatch(logout());
     setOutModalOpen(false);
-    setIsLoggedIn(false);
   };
 
+  //-----------------------------------------------------------------------сразу включает режим
+  // const [isSpecialMode, setIsSpecialMode] = useState(false);
+
+  // useEffect(() => {
+  //   if (isSpecialMode) {
+  //     const scriptJQuery = document.createElement("script");
+  //     scriptJQuery.src = "https://lidrekon.ru/slep/js/jquery.js";
+  //     scriptJQuery.async = true;
+  //     document.body.appendChild(scriptJQuery);
+
+  //     const scriptSpecial = document.createElement("script");
+  //     scriptSpecial.src = "https://lidrekon.ru/slep/js/uhpv-hover-full.min.js";
+  //     scriptSpecial.async = true;
+  //     document.body.appendChild(scriptSpecial);
+
+  //     return () => {
+  //       document.body.removeChild(scriptJQuery);
+  //       document.body.removeChild(scriptSpecial);
+  //     };
+  //   }
+  // }, [isSpecialMode]);
+
+  //-----------------------------------------------------------------------не включает сразу, но не выключает
+
+  // const [isSpecialMode, setIsSpecialMode] = useState(false);
+
+  // useEffect(() => {
+  //   if (isSpecialMode && !window.uhpv) {
+  //     // 1. Динамически загружаем jQuery. Рекомендуется взять jQuery с официального CDN.
+  //     const scriptJQuery = document.createElement("script");
+  //     scriptJQuery.src = "https://code.jquery.com/jquery-3.6.0.min.js";
+  //     scriptJQuery.async = true;
+  //     scriptJQuery.onload = () => {
+  //       console.log("jQuery загружен.");
+  //       // Если необходимо использовать noConflict, можно сделать так:
+  //       // const $j = jQuery.noConflict();
+
+  //       // 2. После загрузки jQuery подключаем плагин для слабовидящих
+  //       const scriptSpecial = document.createElement("script");
+  //       scriptSpecial.src =
+  //         "https://lidrekon.ru/slep/js/uhpv-hover-full.min.js";
+  //       scriptSpecial.async = true;
+  //       scriptSpecial.onload = () => {
+  //         // 3. Оборачиваем инициализацию в IIFE.
+  //         // Это нужно для того, чтобы внутри функции гарантированно использовать jQuery через параметр $
+  //         (function ($) {
+  //           if (window.uhpv && typeof window.uhpv.init === "function") {
+  //             window.uhpv.init();
+  //             console.log("uhpv инициализирован.");
+  //           }
+  //         })(jQuery);
+  //       };
+  //       document.body.appendChild(scriptSpecial);
+  //     };
+  //     document.body.appendChild(scriptJQuery);
+  //   }
+  // }, [isSpecialMode]);
+
   const [isSpecialMode, setIsSpecialMode] = useState(false);
+  const scriptJQueryRef = useRef(null);
+  const scriptSpecialRef = useRef(null);
+  // Сохраняем оригинальную ссылку на jQuery после загрузки
+  const originalJQueryRef = useRef(null);
+  const isMounted = useRef(false);
 
   useEffect(() => {
+    if (!isMounted.current) {
+      // Пропускаем эффект на первой отрисовке
+      isMounted.current = true;
+      return;
+    }
+
     if (isSpecialMode) {
-      const scriptJQuery = document.createElement("script");
-      scriptJQuery.src = "https://lidrekon.ru/slep/js/jquery.js";
-      scriptJQuery.async = true;
-      document.body.appendChild(scriptJQuery);
+      // Если включаем режим и плагин ещё не загружен — добавляем скрипты.
+      if (!window.uhpv) {
+        const scriptJQuery = document.createElement("script");
+        scriptJQuery.src = "https://code.jquery.com/jquery-3.6.0.min.js";
+        scriptJQuery.async = true;
+        scriptJQuery.onload = () => {
+          console.log("jQuery загружен.");
+          originalJQueryRef.current = window.jQuery;
 
-      const scriptSpecial = document.createElement("script");
-      scriptSpecial.src = "https://lidrekon.ru/slep/js/uhpv-hover-full.min.js";
-      scriptSpecial.async = true;
-      document.body.appendChild(scriptSpecial);
+          const scriptSpecial = document.createElement("script");
+          scriptSpecial.src =
+            "https://lidrekon.ru/slep/js/uhpv-hover-full.min.js";
+          scriptSpecial.async = true;
+          scriptSpecial.onload = () => {
+            (function ($) {
+              if (window.uhpv && typeof window.uhpv.init === "function") {
+                window.uhpv.init();
+                console.log("uhpv инициализирован.");
+              }
+            })(window.jQuery);
+          };
+          scriptSpecialRef.current = scriptSpecial;
+          document.body.appendChild(scriptSpecial);
+        };
+        scriptJQueryRef.current = scriptJQuery;
+        document.body.appendChild(scriptJQuery);
+      }
+    } else {
+      if (window.uhpv && typeof window.uhpv.deinit === "function") {
+        window.uhpv.deinit();
+        console.log("uhpv деинициализирован.");
+      } else {
+        console.log("Метод деинициализации отсутствует.");
+      }
+      if (
+        scriptSpecialRef.current &&
+        document.body.contains(scriptSpecialRef.current)
+      ) {
+        document.body.removeChild(scriptSpecialRef.current);
+        scriptSpecialRef.current = null;
+      }
+      window.uhpv = null;
+      console.log("Режим для слабовидящих выключен.");
 
-      return () => {
-        document.body.removeChild(scriptJQuery);
-        document.body.removeChild(scriptSpecial);
-      };
+      window.location.reload();
     }
   }, [isSpecialMode]);
 
@@ -132,7 +235,7 @@ export const MainHeader = () => {
             </div>
           </div>
         </div>
-        <div className={styles.special}>
+        {/* <div className={styles.special}>
           <div
             onClick={() => setIsSpecialMode((prev) => !prev)}
             id="specialButton"
@@ -140,6 +243,12 @@ export const MainHeader = () => {
           >
             <div className={styles.special_icon}></div>
           </div>
+        </div> */}
+        <div
+          onClick={() => setIsSpecialMode((prev) => !prev)}
+          className={`${styles.button} ${styles.button_black} ${styles.button_special}`}
+        >
+          <div className={styles.special_icon}></div>
         </div>
       </div>
       {isBurgerOpen && (
@@ -216,7 +325,7 @@ export const MainHeader = () => {
           </div>
         </div>
       )}
-      <Modal
+      {/* <Modal
         isOpen={isLoginModalOpen}
         onClose={() => setLoginModalOpen(false)}
         modalHeader="Вход"
@@ -247,7 +356,40 @@ export const MainHeader = () => {
             <ButtonBlackSmall>Войти</ButtonBlackSmall>
           </button>
         </form>
+      </Modal> */}
+      <Modal
+        isOpen={isLoginModalOpen}
+        onClose={() => setLoginModalOpen(false)}
+        modalHeader="Вход"
+      >
+        <form onSubmit={handleSubmit(handleLogin)}>
+          <div className={styles.module}>
+            <label htmlFor="surname">Фамилия</label>
+            <input
+              type="text"
+              id="surname"
+              {...register("surname")}
+              placeholder="Фамилия"
+            />
+          </div>
+          <div className={styles.module}>
+            <label htmlFor="password">Номер паспорта</label>
+            <input
+              type="text"
+              id="password"
+              placeholder="AA0000000"
+              {...register("password")}
+            />
+          </div>
+          {error && <p className={styles.error}>{error}</p>}
+          <button type="submit" className={styles.button_modal}>
+            <ButtonBlackSmall>
+              {status === "loading" ? "Загрузка..." : "Войти"}
+            </ButtonBlackSmall>
+          </button>
+        </form>
       </Modal>
+
       <Modal
         isOpen={isOutModalOpen}
         onClose={() => setOutModalOpen(false)}

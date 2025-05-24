@@ -19,7 +19,7 @@ export const NewsSlider = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch("/api/news");
+        const response = await fetch("/api/news/latest");
         if (!response.ok) {
           throw new Error("Ошибка при получении новостей");
         }

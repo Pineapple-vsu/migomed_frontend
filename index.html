@@ -8,10 +8,24 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // Добавьте в public/index.html перед загрузкой React
+      window.jQuery = window.$ = { loaded: false };
+      document.addEventListener("DOMContentLoaded", () => {
+        window.jQuery.loaded = false;
+      });
+    </script>
+    <!-- <script src="https://lidrekon.ru/slep/js/jquery.js"></script>
+    <script src="https://lidrekon.ru/slep/js/uhpv-hover-full.min.js"></script> -->
     <script type="module" src="/src/main.jsx"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
-    <script src="https://lidrekon.ru/slep/js/jquery.js"></script>
-    <script src="https://lidrekon.ru/slep/js/uhpv-hover-full.min.js"></script>
+    <!-- public/index.html
+    <script>
+      window.jQueryLoader = {
+        loaded: false,
+        callbacks: [],
+      };
+    </script> -->
   </body>
 </html>
 

@@ -1,6 +1,3 @@
-//
-// import {} from "./components";
-
 import { analyzesbanner } from "../../assets";
 import { Banner, Loader, Record } from "../../components";
 import { Video } from "../../components/video/Video";
